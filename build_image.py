@@ -2,10 +2,11 @@
 """Generator for the make.fun news-image-20261119 entry image.
 
 Draws a one-page newspaper digest of Thursday 19 November 2026 with
-Pillow: 52 stories in 7 regional sections, three drawn lead scenes
-(the Shenzhen trilateral, the Gulf tanker, GTA VI launch night), a
-dot-matrix world map, a Day in Numbers panel, a UTC timeline and a
-date-check stamp. Deterministic: same data, same PNG, every run.
+Pillow: stories in 7 regional sections, three drawn lead scenes
+(the Shenzhen trilateral, the Hague genocide ruling, GTA VI launch
+night), a pictured mid-card row, a dot-matrix world map, a Day in
+Numbers panel, a UTC timeline, a date-check stamp and strip.
+Deterministic: same data, same PNG, every run.
 """
 import os
 from PIL import Image, ImageDraw, ImageFont
@@ -72,25 +73,29 @@ def centred(txt, font, top, colour=FG):
 LEAD_STORIES = [
     ("SHENZHEN · A FIRST IN HISTORY", (29, 78, 137),
      "Trump, Xi & Putin sit down together",
-     "The US, Chinese and Russian leaders met for an hour at Kylin Villa — "
-     "the first three-way summit ever held. Trump urged nuclear cuts; "
-     "Ukraine and Iran were on the table. (AP/AFP)"),
-    ("THE GULF · A SECOND DAY OF FIRE", (179, 84, 30),
-     "Iran widens its attacks",
-     "Iranian drones struck at Kuwait and Bahrain overnight; a tanker was "
-     "hit off Oman and debris damaged Saudi Arabia's PIF tower in Riyadh. "
-     "The US rushed more Patriots to the Gulf. (Reuters/UKMTO)"),
-    ("LAUNCH DAY · GRAND THEFT AUTO VI", (150, 20, 90),
+     "The US, Chinese and Russian leaders met for 90 minutes at Kylin "
+     "Villa — the first three-way summit ever held. They issued a "
+     "'Declaration on Peace' on nuclear risk and UN reform; APEC "
+     "leaders adopted the Shenzhen Declaration. (AP/AFP)"),
+    ("THE HAGUE · WORLD COURT RULING", (0, 110, 100),
+     "World Court rules Myanmar committed genocide",
+     "The International Court of Justice ruled 9–6 that Myanmar "
+     "committed genocide against the Rohingya and ordered "
+     "reparations. (Al Jazeera/UN News)"),
+    ("GTA VI · LAUNCH DAY", (150, 20, 90),
      "The world's biggest game lands",
-     "Rockstar's Grand Theft Auto VI went on sale worldwide on Thursday — "
-     "the most anticipated release in gaming history, ending a wait of more "
-     "than a decade since GTA V. (Rockstar)"),
+     "Rockstar's Grand Theft Auto VI went on sale worldwide on "
+     "Thursday — and by evening Sensor Tower estimated day one at "
+     "24.6 million copies and $2.36bn including pre-orders: the "
+     "biggest entertainment launch ever, about three times GTA V's "
+     "first day. Take-Two has not confirmed the figures. "
+     "(Sensor Tower)"),
 ]
 
 SECTIONS = [
     ("ASIA-PACIFIC", (29, 111, 184), [
         ("Xi opens the APEC plenary",
-         "China pledged $20m for APEC cooperation and a new Asia-Pacific studies centre in Shenzhen."),
+         "China pledged $20m for APEC cooperation and a new Asia-Pacific studies centre in Shenzhen. (AP)"),
         ("Trump–Xi: a third meeting this year",
          "Their third meeting this year; the trade truce expires 10 January, rare earths 75% below normal."),
         ("Lee urges reopening North Korea dialogue",
@@ -104,7 +109,7 @@ SECTIONS = [
     ]),
     ("EUROPE & UKRAINE", (68, 86, 168), [
         ("Kerch Bridge hit for a third time in a week",
-         "Night strike on the railway section halted traffic; a 227-metre span fell on 17 Nov."),
+         "Night strike on the railway section halted traffic; a 227-metre span fell on 17 Nov. (Reuters)"),
         ("Russian strikes kill four in central Odesa",
          "Three strikes on the centre; a market hit in Zlatopol injured 11; Naftogaz sites attacked."),
         ("Europe's coalition gathers in Berlin",
@@ -124,7 +129,7 @@ SECTIONS = [
     ]),
     ("AMERICAS", (46, 125, 50), [
         ("Trump tells Americans to 'relax'",
-         "He called the bank, Microsoft and air-traffic failures unrelated; Rubio saw no link."),
+         "He called the bank, Microsoft and air-traffic failures unrelated; Rubio saw no link. (AP)"),
         ("218 signatures force an Epstein files vote",
          "The discharge petition hit 218 as the FAA lifted a nationwide ground stop."),
         ("US & Venezuela restore military ties",
@@ -136,19 +141,19 @@ SECTIONS = [
     ]),
     ("AFRICA", (166, 124, 0), [
         ("Nigeria's Senate demands answers for 37 dead miners",
-         "Lawmakers sought accountability over artisanal miners who died in custody in Minna."),
+         "Lawmakers sought accountability over artisanal miners who died in custody in Minna. (AFP)"),
         ("Dangote refinery IPO upsized to $2.1bn",
          "Demand near $4.5bn lifted the offer from $1.62bn — among Africa's largest listings."),
     ]),
     ("OCEANIA", (0, 131, 143), [
         ("England take the ODI series in Hobart",
-         "A 97-run win in the decider sealed the one-day series 2–1 over Australia."),
+         "A 97-run win in the decider sealed the one-day series 2–1 over Australia. (BBC Sport)"),
         ("Canberra holds the line to a silent Voyager",
          "Confirmed by carrier signal alone: no data since 14 Nov; commands take a day each way."),
     ]),
     ("CLIMATE · TECH · SPORT · CULTURE", (106, 27, 154), [
         ("COP31 deadlocked: 21 issues still open",
-         "Ministers launched the second Global Stocktake; finance and fossil fuels unresolved."),
+         "Ministers launched the second Global Stocktake; finance and fossil fuels unresolved. (Reuters)"),
         ("Anthropic's $81.3bn IPO is history's largest",
          "Priced at $83 (ticker ANT), the raise values the AI firm at $1.5 trillion."),
         ("Markets slide; gold sinks to a 14-month low",
@@ -168,38 +173,70 @@ BRIEF_ITEMS = [
     ("HONG KONG", "John Lee hails five APEC outcomes; Chile deal signed"),
     ("MANILA", "Envoy: 'biggest trade deal' unsigned; 12.5% tariff stands"),
     ("APEC", "Trump champions US economy, opposes global AI rules"),
-    ("SEOUL", "Lee & Carney agree energy and AI cooperation"),
     ("BRUSSELS", "EU–UK draft drops the words 'trusted partnership'"),
     ("NUCLEAR", "New START's expiry hangs over the Shenzhen talks"),
     ("COP31", "Adaptation Fund pledges total just $50.2m"),
     ("COP31", "75 countries back the '35x35' electrification push"),
     ("COP31", "Four nations unveil fossil-fuel phaseout roadmaps"),
     ("US", "Emergency Supreme Court filing over Venezuelan TPS"),
-    ("MANILA", "US explores a civil nuclear pact with the Philippines"),
     ("TECH", "IEA: datacentre emissions to rise 70% by 2030"),
-    ("EUROZONE", "Eurogroup reports ahead of the 26 Nov Euro Summit"),
     ("FOOTBALL", "Chelsea edge PSG 1–0 in Women's Champions League"),
     ("FOOTBALL", "City, Real Madrid & Juventus also reach knockouts"),
     ("SPORT", "Marathon champion Jepchirchir banned over doping"),
     ("AUCTION", "A Van Gogh sells for a record $190.4 million"),
-    ("HAITI", "Salvadoran anti-gang troops draw rallies of support"),
     ("UGANDA", "Landslide survivors seek justice at the UN"),
 ]
 
 NUMBER_ITEMS = [
-    ("1st", "US–China–Russia leaders' summit in history — one hour in Shenzhen"),
+    ("$2.36bn", "GTA VI's estimated first-day sales (Sensor Tower)"),
+    ("1st", "first US–China–Russia summit ever — 90 min in Shenzhen"),
+    ("$81.3bn", "raised by Anthropic's IPO, the largest ever recorded"),
     ("72,000", "people evacuated in Odisha as Cyclone Akvan nears landfall"),
-    ("$81.3bn", "raised by Anthropic's IPO, the largest ever, at a $1.5tn value"),
     ("1,000", "long-range cruise missiles pledged by Britain to Ukraine"),
     ("$190.4m", "record auction price for a Van Gogh, set on Thursday"),
-    ("15%", "drop in shipping through Hormuz, the IEA's gravest-ever threat"),
+]
+
+# Pictured mid cards: (colour, headline, summary, source tag, scene key).
+MID_CARDS = [
+    ((106, 27, 154),
+     "Anthropic raises $81.3bn in a record IPO",
+     "Priced at $83 a share; Nasdaq debut on Thursday",
+     "(AP)", "ipo"),
+    ((46, 125, 50),
+     "COP31 draft drops fossil-fuel phase-out",
+     "Antalya text sets a $120bn adaptation goal",
+     "(Reuters/AFP)", "cop"),
+    ((179, 84, 30),
+     "Houthi missiles downed over Riyadh",
+     "Debris fell on the capital, the Saudi-led coalition said",
+     "(Reuters)", "gulf"),
+    ((29, 111, 184),
+     "Cyclone Akvan forces mass evacuations",
+     "72,000 moved in Odisha; landfall due Friday",
+     "(IMD)", "cyclone"),
+    ((29, 111, 184),
+     "Court overturns ex-PM Han's conviction",
+     "Seoul court quashes Han Duck-soo's martial-law case",
+     "(AP)", "seoul"),
+    ((68, 86, 168),
+     "Kerch Bridge hit third time in a week",
+     "Rail traffic halted after the Crimea strike",
+     "(Euronews)", "bridge"),
+]
+
+DATE_CHECK_LINES = [
+    "LEFT OUT AS OTHER DAYS' NEWS — 18 NOV: EU's €45bn Ukraine loan "
+    "plan · Iran fires on Kuwait & Bahrain · Nvidia results",
+    "Jeffries named for US speaker · Anthropic's $83 IPO pricing · "
+    "Voyager 1 one light-day out",
 ]
 
 STORY_TOTAL = (len(LEAD_STORIES)
                + sum(len(stories) for _, _, stories in SECTIONS)
-               + len(BRIEF_ITEMS))
+               + len(BRIEF_ITEMS)
+               + len(MID_CARDS))
 print("story count:", STORY_TOTAL)
-assert STORY_TOTAL == 52, STORY_TOTAL
+assert STORY_TOTAL == 54, STORY_TOTAL
 
 
 # ------------------------------------------------------------- lead scenes
@@ -222,44 +259,61 @@ def paint_flag(fx, fy, fw, fh, kind):
 
 def paint_summit(x, y, w, h):
     pen.rectangle([x, y, x + w, y + h], fill=(38, 62, 110))
-    pen.rectangle([x + 4, y + 5, x + w - 4, y + 17], fill=(212, 175, 55))
-    pen.rectangle([x + 4, y + 7, x + w - 4, y + 9], fill=(38, 62, 110))
-    flag_spots = [(0.14, "us"), (0.44, "cn"), (0.74, "ru")]
+    pen.rectangle([x + 4, y + 6, x + w - 4, y + 21], fill=(212, 175, 55))
+    pen.rectangle([x + 4, y + 9, x + w - 4, y + 11], fill=(38, 62, 110))
+    table_y = y + h - 46
+    pen.rectangle([x + 4, table_y + 10, x + w - 4, y + h - 4],
+                  fill=(140, 32, 44))
+    flag_spots = [(0.16, "us"), (0.47, "cn"), (0.78, "ru")]
     for frac, kind in flag_spots:
         pole_x = x + int(frac * w)
-        pen.line([(pole_x, y + h - 26), (pole_x, y + 20)], fill=(220, 220, 225), width=2)
-        paint_flag(pole_x + 2, y + 20, int(0.22 * w), int(0.15 * h), kind)
-    table_y = y + h - 26
-    pen.rectangle([x + 4, table_y, x + w - 4, table_y + 7], fill=(96, 62, 38))
-    pen.rectangle([x + 8, table_y + 7, x + 12, table_y + 12], fill=(70, 45, 28))
-    pen.rectangle([x + w - 12, table_y + 7, x + w - 8, table_y + 12], fill=(70, 45, 28))
-    leaders = [(0.17, (30, 30, 34)), (0.47, (24, 24, 40)), (0.77, (34, 30, 30))]
+        pen.line([(pole_x, table_y), (pole_x, y + 27)], fill=(220, 220, 225),
+                 width=2)
+        paint_flag(pole_x + 2, y + 27, 26, 19, kind)
+    pen.rectangle([x + 5, table_y, x + w - 5, table_y + 9], fill=(96, 62, 38))
+    pen.rectangle([x + 9, table_y + 9, x + 13, table_y + 14], fill=(70, 45, 28))
+    pen.rectangle([x + w - 13, table_y + 9, x + w - 9, table_y + 14],
+                  fill=(70, 45, 28))
+    leaders = [(0.17, (30, 30, 34)), (0.48, (24, 24, 40)), (0.79, (34, 30, 30))]
     for frac, suit in leaders:
         cx = x + int(frac * w)
-        pen.ellipse([cx - 4, table_y - 17, cx + 4, table_y - 9], fill=(232, 190, 150))
-        pen.polygon([(cx - 8, table_y), (cx + 8, table_y),
-                     (cx + 5, table_y - 9), (cx - 5, table_y - 9)], fill=suit)
-        pen.polygon([(cx - 2, table_y - 9), (cx + 2, table_y - 9),
-                     (cx, table_y - 3)], fill=WHT)
+        pen.ellipse([cx - 7, table_y - 26, cx + 7, table_y - 12],
+                    fill=(232, 190, 150))
+        pen.polygon([(cx - 11, table_y), (cx + 11, table_y),
+                     (cx + 7, table_y - 12), (cx - 7, table_y - 12)],
+                    fill=suit)
+        pen.polygon([(cx - 2, table_y - 12), (cx + 2, table_y - 12),
+                     (cx, table_y - 5)], fill=WHT)
 
 
-def paint_gulf(x, y, w, h):
-    pen.rectangle([x, y, x + w, y + h], fill=(250, 224, 178))
-    sea_top = y + int(h * 0.45)
-    pen.rectangle([x, sea_top, x + w, y + h], fill=(38, 110, 138))
-    pen.ellipse([x + 8, y + 6, x + 28, y + 26], fill=(244, 164, 40))
-    deck_y = y + int(h * 0.62)
-    pen.polygon([(x + 10, deck_y), (x + w - 8, deck_y),
-                 (x + w - 18, deck_y + 13), (x + 18, deck_y + 13)], fill=(35, 35, 40))
-    pen.rectangle([x + 20, deck_y - 6, x + w - 22, deck_y], fill=(90, 90, 96))
-    pen.rectangle([x + w - 30, deck_y - 16, x + w - 20, deck_y - 6], fill=(60, 60, 66))
-    pen.rectangle([x + w - 27, deck_y - 21, x + w - 23, deck_y - 16], fill=(178, 34, 52))
-    for frac_x, frac_y in [(0.34, 0.16), (0.62, 0.10)]:  # drones as X marks
-        dx, dy = x + int(frac_x * w), y + int(frac_y * h)
-        pen.line([(dx - 5, dy - 3), (dx + 5, dy + 3)], fill=(30, 30, 30), width=2)
-        pen.line([(dx - 5, dy + 3), (dx + 5, dy - 3)], fill=(30, 30, 30), width=2)
-    pen.arc([x + int(0.30 * w), y + int(0.14 * h), x + w - 4, y + int(0.72 * h)],
-            start=200, end=320, fill=(178, 34, 52), width=2)
+def paint_hague(x, y, w, h):
+    pen.rectangle([x, y, x + w, y + h], fill=(203, 219, 231))
+    pen.ellipse([x + w - 30, y + 10, x + w - 12, y + 28], fill=(244, 164, 40))
+    pen.rectangle([x + 8, y + 62, x + w - 8, y + h - 28],
+                  fill=(246, 245, 241), outline=(70, 74, 84), width=2)
+    pen.polygon([(x + 4, y + 62), (x + w - 4, y + 62), (x + w // 2, y + 36)],
+                fill=(246, 245, 241), outline=(70, 74, 84))
+    for col_x in (x + 16, x + 34, x + w - 41, x + w - 23):
+        pen.rectangle([col_x, y + 66, col_x + 7, y + h - 30],
+                      fill=(214, 212, 205))
+    cx = x + w // 2
+    dark = (50, 55, 68)
+    pen.rectangle([cx - 32, y + 74, cx + 32, y + 77], fill=dark)
+    pen.rectangle([cx - 2, y + 72, cx + 2, y + 128], fill=dark)
+    pen.ellipse([cx - 3, y + 66, cx + 3, y + 72], fill=dark)
+    for sx in (-1, 1):
+        px = cx + sx * 32
+        pen.line([(px, y + 77), (px - 6, y + 92)], fill=dark, width=2)
+        pen.line([(px, y + 77), (px + 6, y + 92)], fill=dark, width=2)
+        pen.polygon([(px - 8, y + 92), (px + 8, y + 92), (px, y + 99)],
+                    fill=(212, 175, 55))
+    pen.rectangle([cx - 10, y + 128, cx + 10, y + 131], fill=dark)
+    pen.rectangle([x + 4, y + h - 28, x + w - 4, y + h - 21],
+                  fill=(196, 194, 186))
+    pen.rectangle([x + 2, y + h - 21, x + w - 2, y + h - 14],
+                  fill=(196, 194, 186))
+    pen.rectangle([x, y + h - 14, x + w, y + h - 6], fill=(196, 194, 186))
+    pen.rectangle([x, y + h - 6, x + w, y + h], fill=(150, 158, 148))
 
 
 def paint_vice_city(x, y, w, h):
@@ -267,44 +321,154 @@ def paint_vice_city(x, y, w, h):
               (150, 66, 150), (84, 52, 130)]
     band_h = h // len(sunset) + 1
     for idx, colour in enumerate(sunset):
-        pen.rectangle([x, y + idx * band_h, x + w, y + (idx + 1) * band_h], fill=colour)
-    sun_x, sun_y = x + int(0.62 * w), y + int(0.52 * h)
-    pen.ellipse([sun_x - 13, sun_y - 13, sun_x + 13, sun_y + 13], fill=(255, 214, 90))
-    shore = y + int(0.72 * h)
+        pen.rectangle([x, y + idx * band_h, x + w, y + (idx + 1) * band_h],
+                      fill=colour)
+    sun_x, sun_y = x + int(0.60 * w), y + int(0.50 * h)
+    pen.ellipse([sun_x - 19, sun_y - 19, sun_x + 19, sun_y + 19],
+                fill=(255, 214, 90))
+    shore = y + int(0.74 * h)
     pen.rectangle([x, shore, x + w, y + h], fill=(40, 26, 66))
     pen.line([(x, shore), (x + w, shore)], fill=(0, 240, 220), width=2)
-    fronds = [(-11, -4), (-6, -8), (0, -10), (7, -8), (12, -4), (-9, 2), (10, 2)]
-    for frac in (0.14, 0.86):
+    fronds = [(-16, -6), (-9, -12), (0, -15), (10, -12), (18, -6),
+              (-13, 3), (15, 3)]
+    for frac in (0.15, 0.85):
         palm_x = x + int(frac * w)
-        top_x, top_y = palm_x + 3, shore - int(0.34 * h)
+        top_x, top_y = palm_x + 4, shore - int(0.36 * h)
         pen.line([(palm_x, shore), (top_x, top_y)], fill=(20, 14, 34), width=3)
         for ddx, ddy in fronds:
             pen.line([(top_x, top_y), (top_x + ddx, top_y + ddy)],
                      fill=(20, 14, 34), width=2)
-    car_y = y + h - 8
-    pen.polygon([(x + 16, car_y), (x + 22, car_y - 6), (x + 34, car_y - 7),
-                 (x + 42, car_y - 12), (x + 56, car_y - 12), (x + 64, car_y - 7),
-                 (x + 72, car_y - 6), (x + 76, car_y)], fill=(16, 12, 28))
-    pen.rectangle([x + 44, car_y - 11, x + 54, car_y - 8], fill=(0, 240, 220))
-    for wheel_x in (x + 26, x + 66):
-        pen.ellipse([wheel_x - 4, car_y - 5, wheel_x + 4, car_y + 3],
+    car_y = y + h - 10
+    pen.polygon([(x + 12, car_y), (x + 19, car_y - 8), (x + 31, car_y - 9),
+                 (x + 40, car_y - 15), (x + 58, car_y - 15),
+                 (x + 68, car_y - 9), (x + 78, car_y - 8), (x + 84, car_y)],
+                fill=(16, 12, 28))
+    pen.rectangle([x + 42, car_y - 14, x + 56, car_y - 10],
+                  fill=(0, 240, 220))
+    for wheel_x in (x + 26, x + 70):
+        pen.ellipse([wheel_x - 5, car_y - 7, wheel_x + 5, car_y + 3],
                     fill=(10, 8, 20), outline=(255, 90, 180))
 
 
-SCENE_PAINTERS = [paint_summit, paint_gulf, paint_vice_city]
+# ------------------------------------------------------------- card banners
+def banner_ipo(x, y, w, h):
+    pen.rectangle([x, y, x + w, y + h], fill=(26, 44, 84))
+    for idx, bar_h in enumerate((6, 10, 14, 18)):
+        bx = x + 10 + idx * 16
+        pen.rectangle([bx, y + h - 3 - bar_h, bx + 10, y + h - 3],
+                      fill=(64, 199, 120))
+    pen.line([(x + 8, y + h - 6), (x + w - 14, y + 4)],
+             fill=(255, 120, 90), width=2)
+    pen.polygon([(x + w - 14, y + 4), (x + w - 22, y + 5), (x + w - 15, y + 11)],
+                fill=(255, 120, 90))
+
+
+def banner_cop(x, y, w, h):
+    pen.rectangle([x, y, x + w, y + h], fill=(250, 224, 178))
+    pen.rectangle([x, y + 13, x + w, y + h], fill=(38, 110, 138))
+    pen.ellipse([x + 16, y + 3, x + 28, y + 15], fill=(244, 164, 40))
+    palm_x = x + w - 24
+    pen.line([(palm_x, y + 13), (palm_x + 4, y + 4)], fill=(20, 40, 30),
+             width=2)
+    for ddx, ddy in ((-8, -2), (-3, -4), (3, -4), (8, -2)):
+        pen.line([(palm_x + 4, y + 4), (palm_x + 4 + ddx, y + 4 + ddy)],
+                 fill=(20, 40, 30), width=1)
+
+
+def banner_gulf(x, y, w, h):
+    pen.rectangle([x, y, x + w, y + h], fill=(250, 224, 178))
+    pen.rectangle([x, y + 10, x + w, y + h], fill=(38, 110, 138))
+    pen.ellipse([x + 8, y + 2, x + 18, y + 12], fill=(244, 164, 40))
+    pen.polygon([(x + 40, y + 15), (x + 110, y + 15), (x + 102, y + 20),
+                 (x + 48, y + 20)], fill=(35, 35, 40))
+    pen.rectangle([x + 48, y + 12, x + 102, y + 15], fill=(90, 90, 96))
+    pen.rectangle([x + 94, y + 7, x + 100, y + 12], fill=(60, 60, 66))
+    pen.rectangle([x + 94, y + 5, x + 100, y + 7], fill=(178, 34, 52))
+    dx, dy = x + 124, y + 5
+    pen.line([(dx - 4, dy - 2), (dx + 4, dy + 2)], fill=(30, 30, 30), width=2)
+    pen.line([(dx - 4, dy + 2), (dx + 4, dy - 2)], fill=(30, 30, 30), width=2)
+
+
+def banner_cyclone(x, y, w, h):
+    pen.rectangle([x, y, x + w, y + h], fill=(96, 116, 134))
+    pen.rectangle([x, y + 16, x + w, y + h], fill=(52, 84, 110))
+    for box, start, end in ((18, 20, 200), (12, 200, 380), (6, 40, 240)):
+        pen.arc([x + 30 - box // 2, y + 11 - box // 2,
+                 x + 30 + box // 2, y + 11 + box // 2],
+                start=start, end=end, fill=WHT, width=2)
+    for idx in range(5):
+        rx = x + 62 + idx * 16
+        pen.line([(rx, y + 4), (rx - 4, y + 12)], fill=(170, 195, 215),
+                 width=1)
+
+
+def banner_seoul(x, y, w, h):
+    pen.rectangle([x, y, x + w, y + h], fill=(232, 232, 226))
+    cx = x + w // 2
+    dark = (70, 72, 84)
+    pen.polygon([(cx - 22, y + 9), (cx + 22, y + 9), (cx, y + 2)], fill=dark)
+    for col_x in (cx - 18, cx - 3, cx + 13):
+        pen.rectangle([col_x, y + 10, col_x + 5, y + 19], fill=dark)
+    pen.rectangle([cx - 24, y + 19, cx + 24, y + 21], fill=dark)
+
+
+def banner_bridge(x, y, w, h):
+    pen.rectangle([x, y, x + w, y + h], fill=(198, 214, 230))
+    pen.rectangle([x, y + 15, x + w, y + h], fill=(60, 110, 150))
+    dark = (40, 44, 54)
+    pen.rectangle([x + 30, y + 4, x + 33, y + 15], fill=dark)
+    pen.rectangle([x + w - 33, y + 4, x + w - 30, y + 15], fill=dark)
+    pen.line([(x + 31, y + 4), (x + w // 2, y + 12)], fill=dark, width=1)
+    pen.line([(x + w - 31, y + 4), (x + w // 2 + 8, y + 13)], fill=dark,
+             width=1)
+    pen.line([(x + 4, y + 12), (x + w // 2 - 2, y + 12)], fill=dark, width=2)
+    pen.line([(x + w // 2 + 6, y + 13), (x + w - 4, y + 15)], fill=dark,
+             width=2)
+    fx, fy = x + w // 2 + 2, y + 8
+    pen.polygon([(fx, fy - 6), (fx + 2, fy - 1), (fx + 7, fy - 1),
+                 (fx + 3, fy + 2), (fx + 5, fy + 7), (fx, fy + 4),
+                 (fx - 5, fy + 7), (fx - 3, fy + 2), (fx - 7, fy - 1),
+                 (fx - 2, fy - 1)], fill=(244, 140, 40))
+
+
+BANNER_PAINTERS = {
+    "ipo": banner_ipo, "cop": banner_cop, "gulf": banner_gulf,
+    "cyclone": banner_cyclone, "seoul": banner_seoul, "bridge": banner_bridge,
+}
+
+
+def paint_card(x, y, w, h, card):
+    colour, head, summary, tag, scene = card
+    pen.rectangle([x, y, x + w, y + h], fill=LEADBG)
+    pen.rectangle([x, y, x + w, y + 4], fill=colour)
+    BANNER_PAINTERS[scene](x + 6, y + 7, w - 12, 22)
+    head_font = load_font(SERIF_B, 11)
+    yy = y + 32
+    for line in fold(head, head_font, w - 12):
+        pen.text((x + 6, yy), line, font=head_font, fill=FG)
+        yy += 12
+    body_font = load_font(SANS, 9)
+    for line in fold(summary, body_font, w - 12):
+        pen.text((x + 6, yy + 1), line, font=body_font, fill=(45, 45, 45))
+        yy += 9.75
+    pen.text((x + 6, y + h - 13), tag, font=load_font(SANS_B, 9), fill=colour)
+
+
+SCENE_PAINTERS = [paint_summit, paint_hague, paint_vice_city]
 
 
 def build_page():
     # ---- masthead
     centred("THE WHOLE DAY'S WORLD NEWS IN A SINGLE IMAGE",
-            load_font(SANS_B, 11), 8, MUTED)
-    centred("THE WORLD TODAY", load_font(SERIF_B, 44), 22)
-    pen.line([(MARGIN, 74), (PAGE_W - MARGIN, 74)], fill=RULEC, width=3)
-    centred("Thursday 19 November 2026", load_font(SERIF_B, 32), 80, RED)
-    centred("52 stories  ·  7 regions  ·  drawn map & scenes  ·  "
-            "every story reported on the day itself, date-checked",
-            load_font(SANS, 13), 118, MUTED)
-    pen.line([(MARGIN, 140), (PAGE_W - MARGIN, 140)], fill=RULEC, width=1)
+            load_font(SANS_B, 11), 4, MUTED)
+    centred("THE WORLD TODAY", load_font(SERIF_B, 44), 13)
+    pen.line([(MARGIN, 59), (PAGE_W - MARGIN, 59)], fill=RULEC, width=3)
+    centred("Thursday 19 November 2026", load_font(SERIF_B, 32), 64, RED)
+    centred("%d stories  ·  7 regions  ·  drawn map & scenes  ·  "
+            "every story reported on the day itself, date-checked"
+            % STORY_TOTAL,
+            load_font(SANS, 13), 98, MUTED)
+    pen.line([(MARGIN, 114), (PAGE_W - MARGIN, 114)], fill=RULEC, width=1)
 
     # ---- rotated date-check stamp, drawn on its own layer
     stamp = Image.new("RGBA", (176, 48), (0, 0, 0, 0))
@@ -317,10 +481,10 @@ def build_page():
     sp.text((88 - sp.textlength("THU 19 NOV 2026", font=small) / 2, 27),
             "THU 19 NOV 2026", font=small, fill=(178, 34, 52, 255))
     tilted = stamp.rotate(8, expand=True, resample=Image.BILINEAR)
-    canvas.paste(tilted, (836, 12), tilted)
+    canvas.paste(tilted, (836, 8), tilted)
 
-    # ---- three lead panels
-    lead_y, lead_h = 148, 108
+    # ---- three lead panels with tall scenes
+    lead_y, lead_h = 120, 184
     lead_w = (CONTENT_W - 2 * 12) // 3
     head_font = load_font(SERIF_B, 15)
     body_font = load_font(SANS, 10)
@@ -329,22 +493,29 @@ def build_page():
         x0 = MARGIN + idx * (lead_w + 12)
         pen.rectangle([x0, lead_y, x0 + lead_w, lead_y + lead_h], fill=LEADBG)
         pen.rectangle([x0, lead_y, x0 + lead_w, lead_y + 5], fill=colour)
-        SCENE_PAINTERS[idx](x0 + 8, lead_y + 8, 84, lead_h - 16)
-        tx = x0 + 100
+        SCENE_PAINTERS[idx](x0 + 8, lead_y + 8, 104, lead_h - 16)
+        tx = x0 + 120
         pen.text((tx, lead_y + 8), kick, font=kick_font, fill=colour)
         yy = lead_y + 23
-        for line in fold(head, head_font, lead_w - 108):
+        for line in fold(head, head_font, lead_w - 126):
             pen.text((tx, yy), line, font=head_font, fill=FG)
             yy += 17
         yy += 2
-        for line in fold(body, body_font, lead_w - 108):
+        for line in fold(body, body_font, lead_w - 126):
             pen.text((tx, yy), line, font=body_font, fill=(45, 45, 45))
             yy += 11.5
+        assert yy <= lead_y + lead_h - 2, (head, yy)
+
+    # ---- pictured mid-card row
+    card_y, card_h = lead_y + lead_h + 6, 90
+    card_w = (CONTENT_W - 5 * 8) // 6
+    for idx, card in enumerate(MID_CARDS):
+        paint_card(MARGIN + idx * (card_w + 8), card_y, card_w, card_h, card)
 
     # ---- map (left) and numbers (right)
-    map_y = lead_y + lead_h + 8
-    map_h = 168
-    map_w = 596
+    map_y = card_y + card_h + 6
+    map_h = 104
+    map_w = 470
     pen.rectangle([MARGIN, map_y, MARGIN + map_w, map_y + 16], fill=RULEC)
     pen.text((MARGIN + 8, map_y + 2), "THE DAY ON THE MAP — WHERE THURSDAY HAPPENED",
              font=load_font(SANS_B, 12), fill=WHT)
@@ -360,7 +531,7 @@ def build_page():
     paint_numbers(num_x, num_w, map_y)
 
     # ---- UTC timeline strip
-    tl_y = map_y + map_h + 8
+    tl_y = map_y + map_h + 6
     pen.rectangle([MARGIN, tl_y, PAGE_W - MARGIN, tl_y + 24], fill=FG)
     clock_line = ("BY THE CLOCK (UTC)  »  before dawn: Bahrain & Kuwait intercept "
                   "fresh barrages  »  04:45: Trump–Xi bilateral  »  07:30: three "
@@ -373,24 +544,25 @@ def build_page():
 
     # ---- regional sections in two columns
     col_w = (CONTENT_W - 20) // 2
-    top = tl_y + 32
-    bottom = 846
+    top = tl_y + 26
     left_h = sum(section_height(name) for name in LEFT_COL)
     right_h = sum(section_height(name) for name in RIGHT_COL)
     print("left col height:", left_h, "right col height:", right_h,
-          "available:", bottom - top)
-    assert left_h <= bottom - top and right_h <= bottom - top, "section overflow"
+          "sections top:", top)
     yy = top
     for name in LEFT_COL:
         yy = paint_section(name, MARGIN, yy, col_w)
+    left_end = yy
     yy = top
     for name in RIGHT_COL:
         yy = paint_section(name, MARGIN + col_w + 20, yy, col_w)
+    sections_end = max(left_end, yy)
 
     # ---- In Brief band
-    brief_y = 850
+    brief_y = sections_end + 5
     pen.rectangle([MARGIN, brief_y, PAGE_W - MARGIN, brief_y + 17], fill=RULEC)
-    pen.text((MARGIN + 8, brief_y + 2), "IN BRIEF — 22 MORE STORIES FROM THE DAY",
+    pen.text((MARGIN + 8, brief_y + 2),
+             "IN BRIEF — %d MORE STORIES FROM THE DAY" % len(BRIEF_ITEMS),
              font=load_font(SANS_B, 12), fill=WHT)
     brief_col_w = (CONTENT_W - 2 * 14) // 3
     brief_font = load_font(SANS_B, 9)
@@ -402,17 +574,28 @@ def build_page():
             line = tag + " · " + txt
             assert measure(line, brief_font) <= brief_col_w - 10, line
             pen.text((x0 + 10, yy), line, font=brief_font, fill=FG)
-        yy += 14
+        yy += 10.75
+
+    # ---- date-check strip: what was left out as other days' news
+    strip_y = yy + 1
+    pen.rectangle([MARGIN, strip_y, PAGE_W - MARGIN, strip_y + 23], fill=RULEC)
+    strip_font = load_font(SANS_B, 9)
+    for idx, line in enumerate(DATE_CHECK_LINES):
+        assert measure(line, strip_font) <= CONTENT_W - 20, line
+        pen.text((MARGIN + 10, strip_y + 2 + idx * 10.5), line,
+                 font=strip_font, fill=WHT)
 
     # ---- footer
-    foot_y = 989
+    foot_y = strip_y + 26
     pen.line([(MARGIN, foot_y), (PAGE_W - MARGIN, foot_y)], fill=RULEC, width=2)
     centred("Every story happened, or was first reported, on Thursday 19 November "
             "2026 in some time zone. Contested claims are attributed as reported.",
-            load_font(SANS_I, 10), foot_y + 5, MUTED)
+            load_font(SANS_I, 10), foot_y + 3, MUTED)
     centred("Sources: Reuters · Associated Press · AFP · USA Today · Al Jazeera · "
             "TASS · Yonhap · UKMTO · NASA · The Hindu · BBC Sport · official statements",
-            load_font(SANS, 9), foot_y + 20, MUTED)
+            load_font(SANS, 9), foot_y + 15, MUTED)
+    print("footer text ends:", foot_y + 24, "of", PAGE_H)
+    assert foot_y + 24 <= PAGE_H
 
     out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "entry.png")
     canvas.save(out_path, optimize=True)
@@ -445,8 +628,8 @@ MAP_MARKS = [
     {"c": 66, "r": 6, "label": "SHENZHEN", "side": "l", "dy": 0},
     {"c": 68, "r": 7, "label": "MANILA", "side": "r", "dy": 0},
     {"c": 63, "r": 8, "label": "ODISHA", "side": "r", "dy": 12},
-    {"c": 47, "r": 3, "label": "KYIV", "side": "l", "dy": 0},
-    {"c": 45, "r": 2, "label": "BERLIN", "side": "l", "dy": 0},
+    {"c": 47, "r": 3, "label": "KYIV", "side": "l", "dy": 3},
+    {"c": 45, "r": 2, "label": "BERLIN", "side": "l", "dy": -3},
     {"c": 46, "r": 4},
     {"c": 53, "r": 6, "label": "HORMUZ", "side": "r", "dy": 11},
     {"c": 50, "r": 6},
@@ -461,9 +644,9 @@ MAP_MARKS = [
 
 
 def paint_map(map_y):
-    grid_x = MARGIN + 11
-    grid_y = map_y + 24
-    step_x, step_y = 7.0, 7.2
+    grid_x = MARGIN + 24
+    grid_y = map_y + 21
+    step_x, step_y = 5.2, 4.7
     for row_idx, runs in enumerate(LAND_RUNS):
         for first_col, run_len in runs:
             for col in range(first_col, first_col + run_len):
@@ -489,25 +672,25 @@ def paint_map(map_y):
 def paint_numbers(num_x, num_w, map_y):
     big_font = load_font(SERIF_B, 19)
     lab_font = load_font(SANS, 9)
-    cell_w = (num_w - 24) // 2
+    cell_w = (num_w - 24) // 3
     for idx, (num, lab) in enumerate(NUMBER_ITEMS):
-        cx = num_x + 10 + (idx % 2) * (cell_w + 8)
-        cy = map_y + 24 + (idx // 2) * 50
+        cx = num_x + 10 + (idx % 3) * (cell_w + 8)
+        cy = map_y + 21 + (idx // 3) * 40
         pen.text((cx, cy), num, font=big_font, fill=RED)
-        yy = cy + 23
-        for line in fold(lab, lab_font, cell_w):
+        yy = cy + 22
+        for line in fold(lab, lab_font, cell_w - 4):
             pen.text((cx, yy), line, font=lab_font, fill=(45, 45, 45))
-            yy += 10.5
+            yy += 9.5
 
 
 def section_height(name):
     _, stories = SECTION_BY_NAME[name]
     body_font = load_font(SANS, 9)
     col_w = (CONTENT_W - 20) // 2
-    height = 19
+    height = 18
     for _, body in stories:
-        height += 11 + len(fold(body, body_font, col_w - 10)) * 10 + 1
-    return height + 1
+        height += 10.5 + len(fold(body, body_font, col_w - 10)) * 9.5
+    return height + 0.5
 
 
 def paint_section(name, x, y, col_w):
@@ -516,16 +699,15 @@ def paint_section(name, x, y, col_w):
     pen.text((x + 8, y + 2), name, font=load_font(SANS_B, 12), fill=WHT)
     head_font = load_font(SANS_B, 11)
     body_font = load_font(SANS, 9)
-    yy = y + 19
+    yy = y + 18
     for head, body in stories:
         pen.rectangle([x + 1, yy + 3, x + 5, yy + 9], fill=colour)
         pen.text((x + 10, yy), head, font=head_font, fill=FG)
-        yy += 11
+        yy += 10.5
         for line in fold(body, body_font, col_w - 10):
             pen.text((x + 10, yy), line, font=body_font, fill=(60, 60, 60))
-            yy += 10
-        yy += 1
-    return yy + 1
+            yy += 9.5
+    return yy + 0.5
 
 
 if __name__ == "__main__":
