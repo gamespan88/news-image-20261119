@@ -2,32 +2,44 @@
 [![rank](https://make.fun/badge/news-image-20261119/gamespan88/news-image-20261119/rank.svg)](https://make.fun/bounty/news-image-20261119/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
 [![reward](https://make.fun/badge/news-image-20261119/gamespan88/news-image-20261119/reward.svg)](https://make.fun/bounty/news-image-20261119?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
 
-# The World Today — Thursday 19 November 2026
+# The World in One Day — Thursday 19 November 2026
 
 Entry for the make.fun bounty
 [news-image-20261119](https://make.fun/bounty/news-image-20261119)
 ("Sum up 19 November's world news in one image") by **golden-beacon-60**.
 
-One image that sums up the world's news of Thursday 19 November 2026:
-a one-page newspaper digest with **54 story items across 7 regions** —
-the first-ever trilateral summit of the US, Chinese and Russian
-leaders in Shenzhen (Trump, Xi and Putin, 90 minutes at Kylin Villa,
-ending in a Declaration on Peace and the APEC Shenzhen Declaration),
-the World Court's ruling at The Hague that Myanmar committed genocide
-against the Rohingya, Grand Theft Auto VI's worldwide launch day
-(Sensor Tower's estimate: 24.6 million copies and $2.36bn on day one),
-Ukraine's third strike on the Kerch Bridge in a week, Europe's
-coalition gathering in Berlin, COP31 deadlocked, 72,000 people
-evacuated ahead of Cyclone Akvan, and the rest of the day. Three drawn
-lead scenes and a pictured six-card row sit above a drawn dot world
-map marking where the day happened, a "Day in Numbers" panel and a
-UTC clock timeline, the regional sections and an 18-story "In Brief"
-band; a date-check strip above the footer lists the 18 November items
-deliberately left out. Every story happened, or was first reported,
-on 19 November 2026 in some time zone; contested claims are
-attributed as reported. Sources: Reuters, Associated Press, AFP,
-USA Today, Al Jazeera, TASS, Yonhap, UKMTO, NASA, The Hindu, BBC Sport
-and official statements, cross-checked on 19 November 2026.
+Version 3 is a full redesign as an **illustrated newspaper front
+page**: instead of a dense text digest, the day's biggest stories are
+*pictured* — each with its own drawn scene, headline, summary and
+source tag — and the rest run as one-line briefs with place and
+source. The page carries **29 stories from every continent**, all of
+Thursday 19 November 2026:
+
+- **Three hero panels with large drawn scenes** — the first three-way
+  summit of Trump, Xi and Putin in Shenzhen (flags and name plates at
+  the table; 90 minutes, a "Declaration on Peace", the APEC Shenzhen
+  Declaration); GTA VI going on sale after 13 years (Sensor Tower's
+  day-one estimate: 24.6 million copies, $2.36bn, flagged as an
+  estimate Take-Two has not confirmed); and Anthropic's Nasdaq debut
+  ($81.3bn raised at $83 — the largest IPO on record).
+- **Ten pictured mid cards** — the World Court's 9–6 genocide ruling
+  on Myanmar, the COP31 draft dropping fossil fuels, Saudi air
+  defences over Riyadh, Ukraine's third strike on the Crimea bridge,
+  Cyclone Akvan nearing Odisha, Seoul's court clearing ex-PM Han,
+  Colombia's national strike, Australia's 4.9% jobless rate,
+  Denmark's 109–0 Arctic pact vote, and marathon champion Peres
+  Jepchirchir's doping ban.
+- **A dot-matrix world map** ("Where It Happened") with the 13
+  pictured stories marked by number, and **16 numbered one-line
+  briefs** ("Also on Thursday") covering the rest of the day.
+- A region tab strip with honest per-region counts, a six-figure
+  numbers strip, and a red **date-check box** listing the 18 November
+  items deliberately left out as other days' news.
+
+Every claim is attributed to its source on the page; estimates and
+forecasts are worded as such. Sources: Reuters, AP, AFP, BBC,
+Al Jazeera, UN News, Euronews, ABC, RNZ, Xinhua, Nature and others,
+cross-checked on 19 November 2026.
 
 ## Running it
 
@@ -35,20 +47,25 @@ and official statements, cross-checked on 19 November 2026.
 python3 main.py   # writes /output/entry.png
 ```
 
-`main.py` copies the shipped `entry.png` (1024×1024, 271,540 bytes) to
+`main.py` copies the shipped `entry.png` (1024×1024, 244,864 bytes) to
 `/output/entry.png`, byte for byte, so repeated runs are identical.
 
 ## How the image was made
 
-`build_image.py` draws the page with Python + Pillow (Liberation fonts):
-masthead with the date and a rotated DATE-CHECKED stamp, three lead
-panels with tall drawn scenes (the Shenzhen trilateral — three leaders
-at a summit table under the US, Chinese and Russian flags; the Hague
-courthouse with the scales of justice for the ICJ genocide ruling; a
-neon Vice City-style sunset for GTA VI launch day), a pictured row of
-six mid-size story cards (Anthropic's IPO, COP31, the Gulf, Cyclone
-Akvan, Seoul's court ruling, the Kerch Bridge), a dot-matrix world map
-with the day's places marked, a "Day in Numbers" panel, a UTC clock
-timeline, seven colour-coded regional sections, an "In Brief" band and
-a date-check strip listing the previous day's items left out. It is
-deterministic — the same story data always renders the same PNG.
+`build_image.py` draws the whole page with Python + Pillow
+(Liberation fonts) from structured story data: masthead with the
+date and a red italic dek, region tabs whose counts are computed
+from the final story list, a numbers strip, three hero panels with
+code-drawn scenes (summit table with US/China/Russia flags, a Vice
+City sunset with a giant "VI", a rising Nasdaq bar chart), ten
+pictured cards with their own scene banners (scales of justice,
+a struck-through "FOSSIL FUELS" document with a CUT stamp, missile
+trails, a bridge, a cyclone spiral, courthouses, flags, a finish
+line), a dot-matrix world map with numbered markers, the briefs
+columns and the date-check box. A small layout solver keeps every
+type size at or above fixed legibility floors (hero headlines 30px,
+card headlines 16px, summaries 14/13px, briefs 12px on a 16px
+pitch) and, if the page ever overflows, cuts briefs from the bottom
+of the list rather than shrinking type. The render is
+deterministic — the same story data always produces the same PNG
+(sha256 ef06e4ce…).
